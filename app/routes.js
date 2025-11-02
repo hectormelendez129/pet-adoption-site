@@ -36,21 +36,21 @@ module.exports = function (app, passport, db) {
   // MESSAGE BOARD ROUTES
   // ===========================
 
-  // POST a new message
-  app.post('/messages', (req, res) => {
-    db.collection('messages').insertOne({
-      name: req.body.name,
-      petName: req.body.petName,
-      bio: req.body.bio,
-      msg: req.body.msg,
-      thumbUp: 0,
-      thumbDown: 0
-    }, (err, result) => {
-      if (err) return console.log(err);
-      console.log('Saved to database');
-      res.redirect('/profile');
-    });
-  });
+  // // POST a new message
+  // app.post('/messages', (req, res) => {
+  //   db.collection('messages').insertOne({
+  //     name: req.body.name,
+  //     petName: req.body.petName,
+  //     bio: req.body.bio,
+  //     msg: req.body.msg,
+  //     thumbUp: 0,
+  //     thumbDown: 0
+  //   }, (err, result) => {
+  //     if (err) return console.log(err);
+  //     console.log('Saved to database');
+  //     res.redirect('/profile');
+  //   });
+  // });
 app.post('/messages', async (req, res) => {
   try {
     // Fetch a random dog image once

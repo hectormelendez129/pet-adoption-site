@@ -1,0 +1,22 @@
+body {
+  padding-top: 80px;
+  word-wrap: break-word;
+}
+
+img {
+  height: 200px;
+}
+
+li{
+  border: 2px solid black;
+  border-radius: 20px;
+  
+}
+i, button{
+  cursor: pointer;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}

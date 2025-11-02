@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Pet Adoption Site</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+    integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body>
+  <div class="container">
+    <div class="page-header text-center">
+      <h1><span class="fa fa-anchor"></span> Profile Page</h1>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+    <div class="row">
+      <!-- LOCAL INFORMATION -->
+      <div class="col-sm-6">
+        <div class="well">
+          <h3><span class="fa fa-user"></span> Local</h3>
+          <% if (user.local && user.local.email) { %>
+            <p>
+              <strong>id</strong>: <%= user._id %><br>
+                <strong>email</strong>: <%= user.local.email %><br>
+                  <strong>password</strong>: <%= user.local.password %>
+            </p>
+            <a href="/unlink/local" class="btn btn-default">Unlink</a>
+            <% } else { %>
+              <a href="/connect/local" class="btn btn-default">Connect Local</a>
+              <% } %>
+        </div>
+      </div>
+
+      <!-- MESSAGES / PETS -->
+      <div class="col-sm-6">
+
+        <!-- ADD NEW MESSAGE -->
+        <h2>Add a Pet and Bio</h2>
+        <% if (user.local && user.local.email) { %>
+          <form action="/messages" method="POST">
+            <input type="text" placeholder="Email"  value="<%= user.local.email %>" name="name" required>
+            <input type="text" placeholder="Pet Name" name="petName" required>
+            <input type="text" placeholder="Bio" name="bio"  required>
+            <input type="text" placeholder="Adoption Status" name="msg" required>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+          <% } %>
+
+            <h3>Pets</h3>
+            <ul class="messages list-unstyled">
+              <% for (var i=0; i < messages.length; i++) { const m=messages[i]; %>
+                <li class="message panel panel-default" data-id="<%= m._id %>">
+                  <div class="panel-heading message-header">
+                    <strong class="name">
+                      <%= m.name %>
+                    </strong>
+                    <span class="petName"> - <%= m.petName %></span>
+                  </div>
+
+                  <div class="panel-body message-body">
+                    <div class="bio"><strong>Bio:</strong>
+                      <%= m.bio %>
+                    </div>
+                    <div class="text"><strong>Status:</strong>
+                      <%= m.msg %>
+                    </div>
+                  </div>
+                  <div class="pet-image-container">
+                    <img class="pet-image" src="" alt="Dog image">
+                  </div>
+
+                  <div class="panel-footer message-actions">
+                    <span class="thumb-count">
+                      <%= m.thumbUp || 0 %>
+                    </span>
+                    <i class="fa fa-thumbs-up thumb-up" title="Thumbs up"></i>
+                    <button class="trash" title="Adopt Me" <% if (m.msg==='Adopted' ) { %> disabled <% } %>>
+                        <% if (m.msg==='Adopted' ) { %> Adopted <% } else { %> Adopt Me <% } %>
+                    </button>
+                  </div>
+                </li>
+                <% } %>
+            </ul>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JS -->
+  <script src="/main.js"></script>
+</body>
+
+</html>

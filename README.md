@@ -2,7 +2,7 @@
 
 A Full-Stack web application leveraging MongoDB, Express, Node.js that allows users to sign up, log in, and post pets available for adoption. Each pet includes a name, bio, and adoption status. Users can react to posts with thumbs up/down and adopt pets, which updates the adoption status dynamically. The site integrates with the Dog CEO API to fetch images for each pet profile.
 
-## [Live Demo]()
+## [Live Demo](https://pet-adoption-site-jnv5.onrender.com/)
 
 ## Table of Contents
 1. [Project Overview](#project-overview)
@@ -74,7 +74,7 @@ http://localhost:8080
 6. Log out to end your session
 
 ## Screenshots
-[Live Demo]()
+[Live Demo](https://pet-adoption-site-jnv5.onrender.com/)
 
 <img width="604" height="658" alt="Screenshot 2025-11-03 130846" src="https://github.com/user-attachments/assets/d3af5f9a-af4c-4913-8659-bf803db01d8c" />
 
